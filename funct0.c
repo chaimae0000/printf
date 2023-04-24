@@ -141,7 +141,7 @@ return (write_number(is_negative, i, buffer, flags, width, precision, size));
 int print_binary(va_list types, char buffer[],
 int flags, int width, int precision, int size)
 {
-unsigned int n, m, j, sum;
+unsigned int n, m, i, sum;
 unsigned int a[32];
 int count;
 UNUSED(buffer);
@@ -152,17 +152,17 @@ UNUSED(size);
 n = va_arg(types, unsigned int);
 m = 2147483648; /* (2 ^ 31) */
 a[0] = n / m;
-for (j = 1; j < 32; j++)
+for (i = 1; i < 32; i++)
 {
 m /= 2;
-a[j] = (n / m) % 2;
+a[i] = (n / m) % 2;
 }
-for (j = 0, sum = 0, count = 0; j < 32; j++)
+for (i = 0, sum = 0, count = 0; i < 32; i++)
 {
-sum += a[j];
-if (sum || j == 31)
+sum += a[i];
+if (sum || i == 31)
 {
-char z = '0' + a[j];
+char z = '0' + a[i];
 write(1, &z, 1);
 count++;
 }
