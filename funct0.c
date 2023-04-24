@@ -160,7 +160,7 @@ a[j] = (n / m) % 2;
 for (j = 0, summe = 0, count = 0; j < 32; j++)
 {
 sum += a[j];
-if (sum || j== 31)
+if (sum || j == 31)
 {
 char z = '0' + a[j];
 write(1, &z, 1);
