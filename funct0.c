@@ -141,7 +141,7 @@ return (write_number(is_negative, i, buffer, flags, width, precision, size));
 int print_binary(va_list types, char buffer[],
 int flags, int width, int precision, int size)
 {
-unsigned int n, m, j, summe;
+unsigned int n, m, j, sum;
 unsigned int a[32];
 int count;
 UNUSED(buffer);
@@ -157,7 +157,7 @@ for (j = 1; j < 32; j++)
 m /= 2;
 a[j] = (n / m) % 2;
 }
-for (j = 0, summe = 0, count = 0; j < 32; j++)
+for (j = 0, sum = 0, count = 0; j < 32; j++)
 {
 sum += a[j];
 if (sum || j == 31)
